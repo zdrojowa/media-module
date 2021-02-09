@@ -32,7 +32,7 @@ class ApiController extends Controller
 
     public function delete(Media $media, string $mediatype = null) {
         if ($mediatype) {
-            dd($media->removeType($mediatype));
+            $media->removeType($mediatype);
         } else {
             if ($media->types) {
                 foreach($media->types as $type) {
