@@ -1,0 +1,25 @@
+{
+    "name": "zdrojowa/media-module",
+    "description": "Media",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jakub Kosinski",
+            "email": "j.kosinski@zdrojowainvest.pl"
+        },
+        {
+            "name": "Alina Dawydowa",
+            "email": "a.dawydowa@zdrojowainvest.pl"
+        }
+    ],
+    "homepage": "https://github.com/zdrojowa/media-module",
+    "keywords": ["Laravel", "MediaModule"],
+    "require": {
+        "zdrojowa/dashboardmodule": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Selene\\Modules\\MediaModule\\": "src/"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+api.files:
+  path: /media/files
+  controller: Selene\Modules\MediaModule\Http\Controllers\ApiController@files
+  methods:
+    - GET
+
+api.media-type:
+  path: /media/{{media}}-{type}
+  controller: Selene\Modules\MediaModule\Http\Controllers\ApiController@get
+  methods:
+    - GET
+
+api.media:
+  path: /media/{{media}}
+  controller: Selene\Modules\MediaModule\Http\Controllers\ApiController@get
+  methods:
+    - GET
+
+api.media-type.delete:
+  path: /media/delete/{{media}}-{type}
+  controller: Selene\Modules\MediaModule\Http\Controllers\ApiController@delete
+  methods:
+    - POST
+
+api.media.delete:
+  path: /media/delete/{{media}}
+  controller: Selene\Modules\MediaModule\Http\Controllers\ApiController@delete
+  methods:
+    - POST

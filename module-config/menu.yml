@@ -1,0 +1,5 @@
+media:
+  name: Media
+  icon: images
+  permission: MediaModule.media
+  route: MediaModule::media

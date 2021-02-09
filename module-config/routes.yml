@@ -1,0 +1,53 @@
+media:
+  path: /dashboard/media
+  controller: Selene\Modules\MediaModule\Http\Controllers\MediaController@index
+  methods:
+    - GET
+  permission: MediaModule
+
+
+media.upload.ajax:
+  path: /dashboard/media/upload/ajax
+  controller: Selene\Modules\MediaModule\Http\Controllers\MediaController@ajaxUpload
+  methods:
+    - POST
+  permission: MediaModule
+
+
+media.imageType:
+  path: /media/{{media}}-{type}
+  controller: Selene\Modules\MediaModule\Http\Controllers\MediaController@imageType
+  methods:
+    - GET
+
+media.image:
+  path: /media/{{media}}
+  controller: Selene\Modules\MediaModule\Http\Controllers\MediaController@image
+  methods:
+    - GET
+
+media.image.info:
+  path: /dashboard/media/{{media}}/info
+  controller: Selene\Modules\MediaModule\Http\Controllers\MediaController@info
+  methods:
+    - GET
+
+media.image.editor.save:
+  path: /dashboard/media/editor
+  controller: Selene\Modules\MediaModule\Http\Controllers\MediaController@editorSave
+  methods:
+    - POST
+    - GET
+
+media.image.info.update:
+  path: /dashboard/media/{{id}}/info
+  controller: Selene\Modules\MediaModule\Http\Controllers\MediaController@updateInfo
+  methods:
+    - PUT
+
+
+media.selector.ajax:
+  path: /dashboard/media/selector/ajax
+  controller: Selene\Modules\MediaModule\Http\Controllers\MediaController@selector
+  methods:
+    - GET

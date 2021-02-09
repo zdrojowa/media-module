@@ -1,0 +1,7 @@
+name: MediaModule
+version: 1.0.0
+
+aclAnchor: MediaModule
+aclName: Media
+
+routePrefix: MediaModule
