@@ -44,10 +44,3 @@ media.image.info.update:
   controller: Selene\Modules\MediaModule\Http\Controllers\MediaController@updateInfo
   methods:
     - PUT
-
-
-media.selector.ajax:
-  path: /dashboard/media/selector/ajax
-  controller: Selene\Modules\MediaModule\Http\Controllers\MediaController@selector
-  methods:
-    - GET

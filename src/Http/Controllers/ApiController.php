@@ -17,10 +17,16 @@ class ApiController extends Controller
     public function files(Request $request): JsonResponse
     {
         $media = Media::query()->orderByDesc('created_at');
+
+        $extensions = $request->get('extensions');
+        if (!empty($extensions)) {
+            $media->whereIn('extension', explode(',', $extensions));
+        }
+        
         $search = $request->get('search');
         if (!empty($search)) {
             $media->where(function($query) use ($search) {
-                $query->where('_id', 'LIKE', '%' . $search . '%')
+                $query->where('_id', '=', $search)
                     ->orWhere('title', 'LIKE', '%' . $search . '%')
                     ->orWhere('alt', 'LIKE', '%' . $search . '%')
                     ->orWhere('description', 'LIKE', '%' . $search . '%')

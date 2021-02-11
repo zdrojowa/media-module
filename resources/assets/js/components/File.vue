@@ -1,24 +1,7 @@
 <template>
   <div class="column-flex">
       <b-button v-b-modal="'modal-' + file._id">Szczegóły</b-button>
-      <img
-          v-if="isImage"
-          :src="mediaRoute + file._id + '-dashboardthumbnail'"
-          :alt="file.alt"
-      >
-      <b-icon-file-text
-          v-else-if="isPdf"
-          style="width:100px; height:100px;"
-      ></b-icon-file-text>
-      <b-embed
-          v-else-if="isVideo"
-          type="iframe"
-          :src="mediaRoute + file._id"
-      ></b-embed>
-      <b-icon-file
-          v-else
-          style="width:100px; height:100px;"
-      ></b-icon-file>
+      <file-view :file="file" :route="mediaRoute" :show="false" type="default" :link="false"></file-view>
       <b-button variant="danger" @click="remove">Usuń</b-button>
       <b-modal :id="'modal-' + file._id" title="Szczegóły załączonego pliku" size="xl" hide-footer>
         <b-row>
@@ -31,9 +14,6 @@
             </b-form-select>
           </b-col>
           <b-col>
-            <b-link :href="src" target="_blank">Link</b-link>
-          </b-col>
-          <b-col>
               <b-button v-if="version" variant="danger" @click="removeVersion">Usuń wersję</b-button>
           </b-col>
           <b-col v-if="isImage">
@@ -42,25 +22,7 @@
         </b-row>
         <b-row>
           <b-col>
-            <img
-                v-if="isImage"
-                style="max-width: inherit"
-                :src="src"
-                :alt="file.alt"
-            >
-            <b-icon-file-text
-                v-else-if="isPdf"
-                style="width:100px; height:100px;"
-            ></b-icon-file-text>
-            <b-embed
-                v-else-if="isVideo"
-                type="iframe"
-                :src="mediaRoute + file._id"
-            ></b-embed>
-            <b-icon-file
-                v-else
-                style="width:100px; height:100px;"
-            ></b-icon-file>
+              <file-view :file="file" :route="mediaRoute" :show="false" :type="type" :link="true"></file-view>
           </b-col>
           <b-col>
             <p>
@@ -120,11 +82,13 @@
 
 <script>
     import ImageEditor from "./ImageEditor";
+    import FileView from "./FileView";
     export default {
         props: ['file', 'i', 'mediaRoute', 'infoRoute', 'editorRoute', 'deleteRoute'],
 
         components: {
-          ImageEditor
+          ImageEditor,
+          FileView
         },
 
         data() {
@@ -161,14 +125,6 @@
         computed: {
           isImage() {
             return this.file.mimetype.includes('image')
-          },
-
-          isPdf() {
-            return this.file.mimetype.includes('pdf')
-          },
-
-          isVideo() {
-            return this.file.mimetype.includes('video')
           },
 
           src() {

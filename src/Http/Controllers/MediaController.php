@@ -68,19 +68,4 @@ class MediaController extends Controller
 
         return response()->json(['status' => 'success']);
     }
-
-    public function selector(Request $request, Media $media) {
-        if($request->extensions === 'all') {
-            return response()->json(
-                $media->select('_id', 'extension', 'mimetype', 'title', 'created_at')->orderByDesc('created_at')->get()
-            );
-        }
-
-        return response()->json(
-            $media->select('_id', 'extension', 'mimetype', 'title', 'created_at')
-                ->whereIn('extension', explode(',', $request->query('extensions')))
-                ->orderByDesc('created_at')
-                ->get()
-        );
-    }
 }
