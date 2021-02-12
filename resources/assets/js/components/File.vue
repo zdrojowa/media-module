@@ -124,7 +124,7 @@
 
         computed: {
           isImage() {
-            return this.file.mimetype.includes('image')
+            return this.file.mimetype.includes('image') && !this.file.mimetype.includes('svg')
           },
 
           src() {

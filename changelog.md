@@ -7,3 +7,6 @@ Init
 
 ### Version 1.1.0
 Add Selector
+
+### Version 1.1.1
+SVG do not edit
