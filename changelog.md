@@ -10,3 +10,6 @@ Add Selector
 
 ### Version 1.1.1
 SVG do not edit
+
+### Version 1.1.2
+SVG style
