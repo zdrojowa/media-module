@@ -13,3 +13,7 @@ SVG do not edit
 
 ### Version 1.1.2
 SVG style
+
+### Version 1.1.3
++ Selector
++ FileView

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <b-button v-b-modal="'modal-selector'" variant="primary">Wybierz</b-button>
-        <b-modal id="modal-selector" title="Wybierz plik" size="xl" hide-footer>
+        <b-button v-b-modal="'modal-selector-' + id" variant="primary">Wybierz</b-button>
+        <b-modal :id="'modal-selector-' + id" title="Wybierz plik" size="xl" hide-footer>
             <template #modal-title>
                 <b-form-input type="text" placeholder="Szukaj" v-model="search" @change="find"/>
             </template>
@@ -18,7 +18,14 @@
                 </div>
             </div>
         </b-modal>
-        <b-modal id="modal-selector-2" title="Potwierdź wybranie" cancel-title="Nie" ok-title="Tak" @cancel="cancel" @ok="choose">
+        <b-modal
+            :id="'modal-selector-' + id + '-2'"
+            title="Potwierdź wybranie"
+            cancel-title="Nie"
+            ok-title="Tak"
+            @cancel="cancel"
+            @ok="choose"
+        >
             <b-form-select
                 v-if="isImage"
                 v-model="type"
@@ -34,6 +41,10 @@
     import FileView from "./FileView";
     export default {
         props : {
+            id: {
+                type: String,
+                default: ''
+            },
             extensions: {
                 type: String
             },
@@ -92,7 +103,7 @@
                         this.types.push({text: type, value: type})
                     })
                 }
-                this.$bvModal.show('modal-selector-2')
+                this.$bvModal.show('modal-selector-' + this.id + '-2')
             },
 
             cancel() {
