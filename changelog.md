@@ -17,3 +17,6 @@ SVG style
 ### Version 1.1.3
 + Selector
 + FileView
+
+### Version 1.1.4
+Fix image styles
