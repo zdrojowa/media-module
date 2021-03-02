@@ -20,3 +20,6 @@ SVG style
 
 ### Version 1.1.4
 Fix FileViewSelector
+
+### Version 1.1.5
+Fix image styles
