@@ -23,3 +23,6 @@ Fix FileViewSelector
 
 ### Version 1.1.5
 Fix image styles
+
+### Version 1.1.6
+Fix media type response

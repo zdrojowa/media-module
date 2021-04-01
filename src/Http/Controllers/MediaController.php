@@ -25,8 +25,8 @@ class MediaController extends Controller
     }
 
     public function imageType(Media $media, string $mediatype) {
-        if($media->extension === 'svg') {
-            return response(file_get_contents($media->fullPath))->header('Content-Type', 'image/svg+xml');
+        if($mediatype === 'default') {
+            return $this->image($media);
         }
 
         if($media->types && $media->types[$mediatype]) {
@@ -44,7 +44,6 @@ class MediaController extends Controller
 
         if(strpos($media->mimetype, 'image')) {
             $image = ImageFacade::make($media->fullPath);
-
             return $image->response();
         }
 
